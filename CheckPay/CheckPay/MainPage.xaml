@@ -27,11 +27,11 @@
                 <TextBlock Text="Gross Pay" Margin="4,10,288,0" RenderTransformOrigin="0.486,1.226" SelectionChanged="TextBlock_SelectionChanged" Height="30"/>
                 <TextBox Text="Enter gross pay" Margin="150,-30,81,0" Height="30" TextChanged="TextBox_TextChanged"/>
 
-                <TextBlock Text="Yearly tax credits" Margin="4,10,235,0" RenderTransformOrigin="0.486,1.226" SelectionChanged="TextBlock_SelectionChanged" Height="30" VerticalAlignment="Center"/>
-                <TextBox Text="Enter Tax credits" Margin="150,-30,80,0" Height="30" TextChanged="TextBox_TextChanged"/>
+                <TextBlock x:Name="tbxUserEntered" Text="Yearly tax credits" Margin="4,10,235,0" RenderTransformOrigin="0.486,1.226" SelectionChanged="TextBlock_SelectionChanged" Height="30" VerticalAlignment="Center" GotFocus="tbxUserEntered_GotFocusWage"/>
+                <TextBox x:Name="tbxUserEnteredCredits" Text="Enter Tax credits" Margin="150,-30,80,0" Height="30" TextChanged="TextBox_TextChanged" GotFocus="tbxUserEntered_GotFocus"/>
 
-                <Button x:Name = "button1" Content = "Calculate" Click = "OnClick1" 
-                    ClickMode = "Hover" Margin = "10"  Width = "150" HorizontalAlignment = "Center" />
+                <Button x:Name = "button1" Content = "Calculate" Click = "OnClick1" HorizontalAlignment = "Center" Margin="10" />
+
             </StackPanel>
 
         </StackPanel>

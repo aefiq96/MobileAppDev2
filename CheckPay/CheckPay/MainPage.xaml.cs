@@ -6,6 +6,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -53,6 +54,13 @@ namespace CheckPay
         private void OnClick1(object sender, RoutedEventArgs e)
         {
             button1.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
+            this.Frame.Navigate(typeof(Results));
+        }
+
+        private void tbxUserEntered_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbxUserEnteredCredits.SelectAll();
+            tbxUserEntered.SelectAll();
         }
     }
 }
