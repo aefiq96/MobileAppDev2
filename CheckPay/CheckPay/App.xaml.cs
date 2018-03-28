@@ -49,6 +49,7 @@ namespace CheckPay
                 rootFrame = new Frame();
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
+                
 
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
@@ -71,10 +72,15 @@ namespace CheckPay
                 // Ensure the current window is active
                 Window.Current.Activate();
             }
+
+            //set upback events listener
+            Windows.UI.Core.SystemNavigationManager.
+                GetForCurrentView().
+                BackRequested += App_BackRequested1;
+
         }
 
-
-        private void App_BackRequested(object sender, Windows.UI.Core.BackRequestedEventArgs e)
+        private void App_BackRequested1(object sender, Windows.UI.Core.BackRequestedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame == null)
@@ -88,6 +94,12 @@ namespace CheckPay
             }
         }
 
+        private void RootFrame_Navigated(object sender, NavigationEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+       
         /// <summary>
         /// Invoked when Navigation to a certain page fails
         /// </summary>

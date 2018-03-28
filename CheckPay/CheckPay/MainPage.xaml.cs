@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
+using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -27,13 +28,44 @@ namespace CheckPay
         ObservableCollection<FontFamily> taxYears = new ObservableCollection<FontFamily>();
         List<string> lstVal = new List<string> { "Month", "Week", "Year"};
 
+        public ComboBox myYear { get; private set; }
+        public ComboBox myFreq { get; private set; }
+        public TextBox myGross { get; private set; }
+        public TextBox myCredits { get; private set; }
+
+                
+
+
         public MainPage()
         {
             this.InitializeComponent();
             taxYears.Add(new FontFamily("2018"));
             taxYears.Add(new FontFamily("2017"));
             taxYears.Add(new FontFamily("2016"));
-            period.DataContext = lstVal;
+            freq.DataContext = lstVal;
+        }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+
+            base.OnNavigatedTo(e);
+
+            Frame rootFrame = Window.Current.Content as Frame;
+            if (rootFrame.CanGoBack)
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Visible;
+            }
+            else
+            {
+                SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
+                    AppViewBackButtonVisibility.Collapsed;
+            }
+        }
+
+        protected override void OnNavigatedFrom(NavigationEventArgs e)
+        {
+            base.OnNavigatedFrom(e);
         }
 
         private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
@@ -53,14 +85,29 @@ namespace CheckPay
 
         private void OnClick1(object sender, RoutedEventArgs e)
         {
+
+            Parameters par = new Parameters();
+
+            par.myCredits = TaxCredits.Text;
+            par.myGross = tbx_Gross.Text;
+          
+            //myFreq = this.freq;
             button1.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
-            this.Frame.Navigate(typeof(Results));
+           
+
+            Frame.Navigate(typeof(Results), par);
+
         }
+
+        private void tbxUserEntered_GotFocusWage(object sender, RoutedEventArgs e)
+        {
+            tbxUserEntered.SelectAll();
+        }
+
 
         private void tbxUserEntered_GotFocus(object sender, RoutedEventArgs e)
         {
-            tbxUserEnteredCredits.SelectAll();
-            tbxUserEntered.SelectAll();
+            TaxCredits.SelectAll();
         }
     }
 }

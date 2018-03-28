@@ -6,6 +6,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,11 +29,28 @@ namespace CheckPay
             this.InitializeComponent();
         }
 
+     
+        public Results(String year, String freq, String gross, String credits)
+        {
+            
+            this.InitializeComponent();
+        }
+
+        public object Variables { get; private set; }
+
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            
+
             base.OnNavigatedTo(e);
+
+            var parameters = (Parameters)e.Parameter;
+
+            tbxBox1.Text = parameters.myGross;
+
             //determine weather of not its showing
             //enter frame root frame from slides
+
             Frame rootFrame = Window.Current.Content as Frame;
             if (rootFrame.CanGoBack)
             {
@@ -46,16 +64,35 @@ namespace CheckPay
             }
         }
 
-        private void Page2_BackRequested(object senter, BackRequestedEventArgs e)
+        
+
+        private void Result_BackRequested(object senter, BackRequestedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
+
+            System.Diagnostics.Debug.WriteLine("Inside Back Requested..");
+
             if (rootFrame.CanGoBack)
             {
-                e.Handled = true;
+                System.Diagnostics.Debug.WriteLine("Inside if");
+                rootFrame.GoBack();
 
             }//end root frame go back
+            else
+            {
+                System.Diagnostics.Debug.WriteLine("Inside else");
+                rootFrame.GoBack();
+            }
         }
 
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+            
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+        }
+           
     }
 }
