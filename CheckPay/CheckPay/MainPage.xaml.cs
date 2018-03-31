@@ -25,24 +25,15 @@ namespace CheckPay
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        ObservableCollection<FontFamily> taxYears = new ObservableCollection<FontFamily>();
-        List<string> lstVal = new List<string> { "Month", "Week", "Year"};
+       // ObservableCollection<FontFamily> taxYears = new ObservableCollection<FontFamily>();
+       // List<string> lstVal = new List<string> { "Month", "Week", "Year"};
 
-        public ComboBox myYear { get; private set; }
-        public ComboBox myFreq { get; private set; }
-        public TextBox myGross { get; private set; }
-        public TextBox myCredits { get; private set; }
-
-                
-
+        private string selected;
 
         public MainPage()
         {
             this.InitializeComponent();
-            taxYears.Add(new FontFamily("2018"));
-            taxYears.Add(new FontFamily("2017"));
-            taxYears.Add(new FontFamily("2016"));
-            freq.DataContext = lstVal;
+           
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -68,28 +59,17 @@ namespace CheckPay
             base.OnNavigatedFrom(e);
         }
 
-        private void TextBlock_SelectionChanged(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void period_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
-
         private void OnClick1(object sender, RoutedEventArgs e)
         {
 
             Parameters par = new Parameters();
 
-            par.myCredits = TaxCredits.Text;
+            par.myCredits = tbx_credits.Text;
             par.myGross = tbx_Gross.Text;
+            par.myFreq = tbx_period.Text;
+            par.myStatus = tbx_marraige.Text;
+           
+            //par.myYear = cb_TaxYear.
           
             //myFreq = this.freq;
             button1.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
@@ -107,7 +87,33 @@ namespace CheckPay
 
         private void tbxUserEntered_GotFocus(object sender, RoutedEventArgs e)
         {
-            TaxCredits.SelectAll();
+            tbx_credits.SelectAll();
         }
+
+        private void tbx_Gross_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbx_Gross.SelectAll();
+        }
+
+        private void tbx_marraige_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbx_marraige.SelectAll();
+        }
+
+        private void tbx_period_GotFocus(object sender, RoutedEventArgs e)
+        {
+            tbx_period.SelectAll();
+        }
+
+        private void cb_TaxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ComboBox combo = sender as ComboBox;
+
+            selected = combo.SelectedItem.ToString();
+
+            System.Diagnostics.Debug.WriteLine(selected);
+        }
+
+        
     }
 }

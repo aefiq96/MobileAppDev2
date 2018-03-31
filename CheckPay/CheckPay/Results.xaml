@@ -8,13 +8,36 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel Orientation="Vertical">
-            <TextBlock Text="CheckPay" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="25" />
-            <StackPanel>
-                <TextBlock Text="Gross: " Margin="0,0,225,0"/>
-            </StackPanel>
-            <TextBox x:Name="tbxBox1" Text="" TextChanged="TextBox_TextChanged_1"/>
-            <Button Content="Button" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Click="Button_Click"/>
+        <TextBlock Text="CheckPay" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="25" />
+        <StackPanel>
+
+            <TextBlock Text="Gross Pay" Margin="3,45,218,0" />
+            <TextBlock Text="" x:Name="tbl_gross" TextAlignment="Right" Height="30" Margin="151,-23,86,0" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="Tax Credits" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" Margin="151,-25,86,0" Height="30"  x:Name="tbl_credits" TextAlignment="Right" />
+
+            <TextBlock Text="Tax @ 20%" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_tax20" Height="30" Margin="150,-30,80,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="Tax @ 40%" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_tax40" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="Total Tax" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_totalTax" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="PRSI @4%" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_prsi4" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="USC" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_usc" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="Total Deductions" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_deductions" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
+            <TextBlock Text="Net Pay" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
+            <TextBlock Text="" x:Name="tbl_net" Height="30" Margin="151,-25,86,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+
         </StackPanel>
     </Grid>
 </Page>

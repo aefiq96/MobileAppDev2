@@ -8,7 +8,7 @@ namespace CheckPay
 {
     public class Parameters
     {
-        public string myYear { get; set; }
+        public string myStatus { get; set; }
         public string myFreq { get; set; }
         public string myGross { get; set; }
         public string myCredits { get; set; }

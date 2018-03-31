@@ -12,23 +12,17 @@
             <TextBlock Text="CheckPay" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="25" />
             <StackPanel>
 
-                <TextBlock Text="Tax Year" Margin="8,20,298,0" />
-                <ComboBox x:Name="TaxYear" Height="30" Margin="150,-25,0,0"
-                    ItemsSource="{x:Bind taxYears}" DisplayMemberPath="Source" Width="123" >
-                </ComboBox>
+                <TextBlock Text="Marital status" Margin="8,20,223,0" />
+                <TextBox Text="Enter Marital status" x:Name="tbx_marraige" Height="30" Margin="151,-25,86,0" RenderTransformOrigin="0.309,0.567" GotFocus="tbx_marraige_GotFocus" />
 
                 <TextBlock Text="Enter Pay frequency" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
-                <ComboBox x:Name="freq" HorizontalAlignment="Left"
-                    VerticalAlignment="Center"
-                    Height="30" ItemsSource="{Binding }"
-                    IsEnabled="True" RenderTransformOrigin="2.859,-0.152" Width="125" Margin="150,-20,0,0" SelectionChanged="period_SelectionChanged" >
-                </ComboBox>
+                <TextBox Text="Enter frequency" x:Name="tbx_period" Height="30" Margin="151,-25,86,0" RenderTransformOrigin="0.309,0.567" GotFocus="tbx_period_GotFocus" />
 
-                <TextBlock Text="Gross Pay" Margin="4,10,288,0" RenderTransformOrigin="0.486,1.226" SelectionChanged="TextBlock_SelectionChanged" Height="30"/>
-                <TextBox Text="Enter gross pay" Margin="150,-30,81,0" Height="30" TextChanged="TextBox_TextChanged" x:Name="tbx_Gross"/>
+                <TextBlock Text="Gross Pay" Margin="4,10,288,0" RenderTransformOrigin="0.486,1.226"  Height="30"/>
+                <TextBox Text="Enter gross pay" Margin="150,-30,81,0" Height="30"  x:Name="tbx_Gross" GotFocus="tbx_Gross_GotFocus"/>
 
-                <TextBlock x:Name="tbxUserEntered" Text="Yearly tax credits" Margin="4,10,235,0" RenderTransformOrigin="0.486,1.226" SelectionChanged="TextBlock_SelectionChanged" Height="30" VerticalAlignment="Center" GotFocus="tbxUserEntered_GotFocusWage"/>
-                <TextBox x:Name="TaxCredits" Text="Enter Tax credits" Margin="150,-30,80,0" Height="30" TextChanged="TextBox_TextChanged" GotFocus="tbxUserEntered_GotFocus"/>
+                <TextBlock x:Name="tbxUserEntered" Text="Yearly tax credits" Margin="4,10,235,0" RenderTransformOrigin="0.486,1.226" Height="30" VerticalAlignment="Center" GotFocus="tbxUserEntered_GotFocusWage"/>
+                <TextBox x:Name="tbx_credits" Text="Enter Tax credits" Margin="150,-30,80,0" Height="30" GotFocus="tbxUserEntered_GotFocus"/>
 
                 <Button x:Name = "button1" Content = "Calculate" Click = "OnClick1" HorizontalAlignment = "Center" Margin="10" />
 
