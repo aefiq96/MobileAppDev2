@@ -51,9 +51,29 @@ namespace CheckPay
 
             var parameters = (Parameters)e.Parameter;
 
-            int gross = Convert.ToInt32(parameters.myGross);
-            int credits = Convert.ToInt32(parameters.myCredits);
+            int gross = 0;
+            int credits = 0;
 
+            //check that the gross input is a numberic value otherwise set to 0
+            try
+            {
+                gross = Convert.ToInt32(parameters.myGross);
+            }
+            catch
+            {
+                gross = 0;
+            }
+
+            //check that the credits input is a numberic value otherwise set to 0
+            try
+            {
+                credits = Convert.ToInt32(parameters.myCredits);
+            }
+            catch
+            {
+                credits = 0;
+            }
+           
             //int z = x + y;
 
             int TaxYear = 0;
