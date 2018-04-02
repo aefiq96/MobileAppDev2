@@ -135,6 +135,12 @@ namespace CheckPay
 
             totalTax = lowerTax + higherTax - credits; // total tax - Tax Free Allowance
 
+            //avoid negitive tax values
+            if (totalTax < 0)
+            {
+                totalTax = 0;
+            }
+
             // Calculate USC
             float uscRate1 = (float)limits[USCRate1] / 100;
             float uscRate2 = (float)limits[USCRate2] / 100;

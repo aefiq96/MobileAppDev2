@@ -15,9 +15,7 @@
                 <TextBlock Text="Marital status" Margin="8,20,223,0" />
                 <TextBox Text="Enter Marital status" x:Name="tbx_marraige" Height="30" Margin="151,-25,86,0" RenderTransformOrigin="0.309,0.567" GotFocus="tbx_marraige_GotFocus" />
 
-                <TextBlock Text="Enter Pay frequency" Margin="3,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
-                <TextBox Text="Enter frequency" x:Name="tbx_period" Height="30" Margin="151,-25,86,0" RenderTransformOrigin="0.309,0.567" GotFocus="tbx_period_GotFocus" />
-
+               
                 <TextBlock Text="Gross Pay" Margin="4,10,288,0" RenderTransformOrigin="0.486,1.226"  Height="30"/>
                 <TextBox Text="Enter gross pay" Margin="150,-30,81,0" Height="30"  x:Name="tbx_Gross" GotFocus="tbx_Gross_GotFocus"/>
 

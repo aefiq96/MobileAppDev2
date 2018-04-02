@@ -66,7 +66,7 @@ namespace CheckPay
 
             par.myCredits = tbx_credits.Text;
             par.myGross = tbx_Gross.Text;
-            par.myFreq = tbx_period.Text;
+           // par.myFreq = tbx_period.Text;
             par.myStatus = tbx_marraige.Text;
            
             //par.myYear = cb_TaxYear.
@@ -98,11 +98,6 @@ namespace CheckPay
         private void tbx_marraige_GotFocus(object sender, RoutedEventArgs e)
         {
             tbx_marraige.SelectAll();
-        }
-
-        private void tbx_period_GotFocus(object sender, RoutedEventArgs e)
-        {
-            tbx_period.SelectAll();
         }
 
         private void cb_TaxYear_SelectionChanged(object sender, SelectionChangedEventArgs e)
