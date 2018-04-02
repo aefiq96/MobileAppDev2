@@ -135,6 +135,47 @@ namespace CheckPay
 
             totalTax = lowerTax + higherTax - credits; // total tax - Tax Free Allowance
 
+            // Calculate USC
+            float uscRate1 = (float)limits[USCRate1] / 100;
+            float uscRate2 = (float)limits[USCRate2] / 100;
+            float uscRate3 = (float)limits[USCRate3] / 100;
+            float uscRate4 = (float)limits[USCRate4] / 100;
+            float totalUSC, usc1, usc2, usc3, usc4 = 0;
+
+
+            if (gross <= limits[USCBand1])
+            {
+                // Tier #1
+                usc1 = (float)(gross * uscRate1) / 100;
+                usc2 = usc3 = usc4 = 0;
+            }
+            else if (gross <= (limits[USCBand1] + limits[USCBand2])) {
+                // Tier #1 & Tier #2
+                usc1 = (float)(limits[USCBand1] * uscRate1) / 100;
+                usc2 = (float)((gross - limits[USCBand1]) * uscRate2) / 100;
+                usc3 = usc4 = 0;
+            }
+            else if (gross <= (limits[USCBand1] + limits[USCBand2] + limits[USCBand3])) {
+                // Tier #1 & Tier #2 & Tier #3
+                usc1 = (float)(limits[USCBand1] * uscRate1) / 100;
+                usc2 = (float)(limits[USCBand2] * uscRate2) / 100;
+                usc3 = (float)((gross - limits[USCBand1] - limits[USCBand2]) * uscRate3) / 100;
+                usc4 = 0;
+            }
+            else
+            {
+                // Tier #1 & Tier #2 & Tier #3 & Tier #4
+                usc1 = (float)(limits[USCBand1] * uscRate1) / 100;
+                usc2 = (float)(limits[USCBand2] * uscRate2) / 100;
+                usc3 = (float)(limits[USCBand3] * uscRate3) / 100;
+                usc4 = (float)((gross - limits[USCBand1] - limits[USCBand2] - limits[USCBand3]) * uscRate4) / 100;
+            }
+
+            totalUSC = usc1 + usc2 + usc3 + usc4;
+
+            float totalDeductions =  totalPRSI + totalTax + totalUSC;
+
+            float netPay = gross - totalDeductions;
 
             tbl_gross.Text = gross.ToString("N2");
             tbl_credits.Text = credits.ToString("N2");
@@ -142,6 +183,9 @@ namespace CheckPay
             tbl_tax40.Text = higherTax.ToString("N2");
             tbl_totalTax.Text = totalTax.ToString("N2");
             tbl_prsi4.Text = totalPRSI.ToString("N2");
+            tbl_usc.Text = totalUSC.ToString("N2");
+            tbl_deductions.Text = totalDeductions.ToString("N2");
+            tbl_net.Text = netPay.ToString("N2");
 
           
             //determine weather of not its showing

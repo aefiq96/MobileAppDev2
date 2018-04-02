@@ -8,9 +8,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <TextBlock Text="CheckPay" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="25" />
+        <TextBlock Text="CheckPay 2018" Grid.Row="0" Margin="5" HorizontalAlignment="Center" FontSize="25" />
         <StackPanel>
-
+            
             <TextBlock Text="Gross Pay" Margin="3,45,218,0" />
             <TextBlock Text="" x:Name="tbl_gross" TextAlignment="Right" Height="30" Margin="151,-23,86,0" RenderTransformOrigin="0.309,0.567" />
 
