@@ -5,7 +5,9 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI.Notifications;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -27,20 +29,21 @@ namespace CheckPay
         public Results()
         {
             this.InitializeComponent();
-
+            
             
 
             
         }
 
      
-        public Results(String year, String freq, String gross, String credits)
+        public Results(String year, String gross, String credits)
         {
             
             this.InitializeComponent();
+            service();
         }
 
-        public object Variables { get; private set; }
+        public object Variables { get; set; }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
@@ -53,6 +56,18 @@ namespace CheckPay
 
             int gross = 0;
             int credits = 0;
+
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+            try
+            {
+               // pvtPlanets.SelectedIndex = (int)localSettings.Values["CurrentPlanet"];
+                tbl_credits.Text = (String)localSettings.Values["credits"];
+            }
+            catch
+            {
+
+            }
 
             //check that the gross input is a numberic value otherwise set to 0
             try
@@ -213,7 +228,9 @@ namespace CheckPay
             tbl_deductions.Text = totalDeductions.ToString("N2");
             tbl_net.Text = netPay.ToString("N2");
 
-          
+            service();
+
+
             //determine weather of not its showing
             //enter frame root frame from slides
             Frame rootFrame = Window.Current.Content as Frame;
@@ -258,6 +275,27 @@ namespace CheckPay
         private void Button_Click(object sender, RoutedEventArgs e)
         {
         }
-           
+
+        private void service()
+        {
+
+            //String Year, String gross, String credits
+            var uri = String.Format("http://uwpcalculationservice20180403053949.azurewebsites.net/?gross={0}&net={1}", tbl_gross.Text, tbl_net.Text);
+
+            var content = new Uri(uri);
+
+            var request = PeriodicUpdateRecurrence.HalfHour;
+
+            var updater = TileUpdateManager.CreateTileUpdaterForApplication();
+
+            updater.StartPeriodicUpdate(content, request);
+        }
+
+        private void block_selectionChanged(object sender, RoutedEventArgs e)
+        {
+            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+            localSettings.Values["credits"] = tbl_credits.Text;
+        }
+
     }
 }

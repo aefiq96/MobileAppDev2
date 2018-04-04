@@ -8,6 +8,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 using Windows.UI.Core;
+using Windows.UI.Notifications;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -33,7 +34,6 @@ namespace CheckPay
         public MainPage()
         {
             this.InitializeComponent();
-           
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
@@ -108,6 +108,8 @@ namespace CheckPay
 
             System.Diagnostics.Debug.WriteLine(selected);
         }
+
+      
 
         
     }

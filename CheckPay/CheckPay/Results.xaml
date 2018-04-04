@@ -15,10 +15,10 @@
             <TextBlock Text="" x:Name="tbl_gross" TextAlignment="Right" Height="30" Margin="151,-23,250,0" RenderTransformOrigin="0.309,0.567" />
 
             <TextBlock Text="Tax Credits" Margin="40,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
-            <TextBlock Text="" Margin="151,-25,250,0" Height="30"  x:Name="tbl_credits" TextAlignment="Right" />
+            <TextBlock Text="" Margin="151,-25,250,0" Height="30"  x:Name="tbl_credits" TextAlignment="Right"  SelectionChanged="block_selectionChanged" />
 
             <TextBlock Text="Tax @ 20%" Margin="40,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
-            <TextBlock Text="" x:Name="tbl_tax20" Height="30" Margin="151,-25,250,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
+            <TextBlock Text="" x:Name="tbl_tax20" Height="30" Margin="151,-25,250,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567"  />
 
             <TextBlock Text="Tax @ 40%" Margin="40,10,218,0" RenderTransformOrigin="0.496,0.417" Height="19"  />
             <TextBlock Text="" x:Name="tbl_tax40" Height="30" Margin="151,-25,250,0" TextAlignment="Right" RenderTransformOrigin="0.309,0.567" />
