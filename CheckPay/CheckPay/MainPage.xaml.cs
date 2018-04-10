@@ -42,11 +42,13 @@ namespace CheckPay
             base.OnNavigatedTo(e);
 
             Frame rootFrame = Window.Current.Content as Frame;
+            //if you can go back , show the back button in the top left
             if (rootFrame.CanGoBack)
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
                     AppViewBackButtonVisibility.Visible;
             }
+            //else collapse the back button on the homepage
             else
             {
                 SystemNavigationManager.GetForCurrentView().AppViewBackButtonVisibility =
@@ -59,28 +61,27 @@ namespace CheckPay
             base.OnNavigatedFrom(e);
         }
 
+        //onclick for the Calculate button
         private void OnClick1(object sender, RoutedEventArgs e)
         {
-
+            //reference parameters class. 
             Parameters par = new Parameters();
 
             par.myCredits = tbx_credits.Text;
             par.myGross = tbx_Gross.Text;
-           // par.myFreq = tbx_period.Text;
             par.myStatus = tbx_marraige.Text;
            
-            //par.myYear = cb_TaxYear.
-          
-            //myFreq = this.freq;
+            //when clicked the forground colour of the button changed to red
             button1.Foreground = new SolidColorBrush(Windows.UI.Colors.Red);
            
-
+            //when button is clicked you go to the results page and the values stored in par are also passed over
             Frame.Navigate(typeof(Results), par);
 
         }
 
         private void tbxUserEntered_GotFocusWage(object sender, RoutedEventArgs e)
         {
+            //highlight the field when inputting values
             tbxUserEntered.SelectAll();
         }
 

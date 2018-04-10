@@ -30,9 +30,6 @@ namespace CheckPay
         {
             this.InitializeComponent();
             
-            
-
-            
         }
 
      
@@ -56,18 +53,6 @@ namespace CheckPay
 
             int gross = 0;
             int credits = 0;
-
-            ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
-            try
-            {
-               // pvtPlanets.SelectedIndex = (int)localSettings.Values["CurrentPlanet"];
-                tbl_credits.Text = (String)localSettings.Values["credits"];
-            }
-            catch
-            {
-
-            }
 
             //check that the gross input is a numberic value otherwise set to 0
             try
@@ -278,12 +263,12 @@ namespace CheckPay
 
         private void service()
         {
-
-            //String Year, String gross, String credits
+            //String Year, String gross, String credits - passing the values to the azure website
             var uri = String.Format("http://uwpcalculationservice20180403053949.azurewebsites.net/?gross={0}&net={1}", tbl_gross.Text, tbl_net.Text);
 
             var content = new Uri(uri);
 
+            //how often the tile updates itself
             var request = PeriodicUpdateRecurrence.HalfHour;
 
             var updater = TileUpdateManager.CreateTileUpdaterForApplication();
